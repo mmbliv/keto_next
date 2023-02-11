@@ -1,3 +1,5 @@
+import { CategoryType } from "@/types/type";
+
 const options = {
   method: "GET",
   headers: {
@@ -11,4 +13,24 @@ export function fetchData(url: string) {
     .then((res) => res.json())
     .catch((e) => console.log(e));
   return data;
+}
+
+export async function getCategoryId() {
+  const data = await fetchData("categories/");
+  return data.map((d: CategoryType) => {
+    return {
+      params: {
+        id: d.id.toString(),
+      },
+    };
+  });
+}
+
+export async function getCategoryDataById(id: number) {
+  const data = await fetchData(`?category=${id}`);
+
+  return {
+    id,
+    ...data,
+  };
 }
