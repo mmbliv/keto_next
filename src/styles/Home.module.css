@@ -5,3 +5,18 @@
   gap: 1rem;
   /* align-items: center; */
 }
+@media (min-width: 600px) {
+  .main {
+    grid-template-columns: auto auto;
+  }
+}
+@media (min-width: 900px) {
+  .main {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (min-width: 1200px) {
+  .main {
+    grid-template-columns: auto auto auto auto;
+  }
+}
