@@ -1,12 +1,12 @@
 import { getCategoryId, getCategoryDataById } from "@/utils/fetch";
-import { CategoryType } from "@/types/type";
+import { CategoryType, RecipeType } from "@/types/type";
 
 type propsType = {
-  categoryData: CategoryType;
+  categoryData: RecipeType;
 };
 export default function Category(props: propsType) {
-  console.log(getCategoryDataById(2));
-  console.log(props);
+  //   console.log(getCategoryDataById(2));
+  //   console.log(props);
   return <p></p>;
 }
 

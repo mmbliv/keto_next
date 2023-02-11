@@ -1,13 +1,23 @@
 import { CategoryType } from "@/types/type";
 import Link from "next/link";
+import Image from "next/image";
+import style from "@/styles/CategoryCard.module.css";
 
 type PropsType = {
-  category: CategoryType;
+  data: CategoryType;
 };
 export default function CategoryCard(props: PropsType) {
+  console.log(props);
   return (
-    <Link href={`/category/${props.category.id}`}>
-      {props.category.category}
+    <Link href={`/category/${props.data.id}`} className={style.card}>
+      <Image
+        alt={props.data.category}
+        src={props.data.image}
+        // width={100}
+        // height={100}
+        fill
+      />
+      <p className={style.cardText}>{props.data.category}</p>
     </Link>
   );
 }

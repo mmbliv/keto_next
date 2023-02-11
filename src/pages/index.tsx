@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { fetchData } from "@/utils/fetch";
@@ -9,7 +8,7 @@ import CategoryCard from "@/component/CategoryCard";
 const inter = Inter({ subsets: ["latin"] });
 
 type PropsType = {
-  dataCategories: CategoryType[];
+  data: CategoryType[];
 };
 export default function Home(props: PropsType) {
   // const data = fetchData("categories/");
@@ -24,8 +23,8 @@ export default function Home(props: PropsType) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {props.dataCategories.map((data) => {
-          return <CategoryCard key={data.id} category={data} />;
+        {props.data.map((data) => {
+          return <CategoryCard key={data.id} data={data} />;
         })}
       </main>
     </>
@@ -34,9 +33,13 @@ export default function Home(props: PropsType) {
 
 export async function getStaticProps() {
   const dataCategories = await fetchData("categories/");
+  const data = dataCategories.map((d: any) => {
+    return { id: d.id, category: d.category, image: d.thumbnail };
+  });
   return {
     props: {
-      dataCategories: dataCategories,
+      // dataCategories: dataCategories,
+      data,
     },
   };
 }

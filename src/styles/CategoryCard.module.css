@@ -1,0 +1,14 @@
+.card {
+  /* justify-self: center; */
+  position: relative;
+  height: 15rem;
+  width: 15rem;
+  border: 3px solid rgba(105, 105, 62, 0.55);
+  border-radius: 5px;
+}
+.cardText {
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+  width: 100%;
+}
