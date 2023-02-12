@@ -16,6 +16,7 @@ export default function CategoryCard(props: PropsType) {
         // width={100}
         // height={100}
         fill
+        style={{ objectFit: "cover" }}
       />
       <p className={style.cardText}>{props.data.name}</p>
     </Link>
