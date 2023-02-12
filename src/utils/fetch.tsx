@@ -1,4 +1,4 @@
-import { CategoryType } from "@/types/type";
+import { CardType } from "@/types/type";
 
 const options = {
   method: "GET",
@@ -17,7 +17,7 @@ export function fetchData(url: string) {
 
 export async function getCategoryId() {
   const data = await fetchData("categories/");
-  return data.map((d: CategoryType) => {
+  return data.map((d: CardType) => {
     return {
       params: {
         id: d.id.toString(),

@@ -1,11 +1,11 @@
-export type CategoryType = {
+export type CardType = {
   id: string;
-  category: string;
+  name: string;
   image: string;
 };
 
-export type RecipeType = {
-  id: string;
-  recipe: string;
-  image: string;
-};
+// export type RecipeType = {
+//   id: string;
+//   recipe: string;
+//   image: string;
+// };

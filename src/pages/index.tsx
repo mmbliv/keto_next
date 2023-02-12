@@ -2,13 +2,13 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { fetchData } from "@/utils/fetch";
-import { CategoryType } from "@/types/type";
+import { CardType } from "@/types/type";
 import CategoryCard from "@/component/CategoryCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
 type PropsType = {
-  data: CategoryType[];
+  data: CardType[];
 };
 export default function Home(props: PropsType) {
   // const data = fetchData("categories/");
@@ -34,7 +34,7 @@ export default function Home(props: PropsType) {
 export async function getStaticProps() {
   const dataCategories = await fetchData("categories/");
   const data = dataCategories.map((d: any) => {
-    return { id: d.id, category: d.category, image: d.thumbnail };
+    return { id: d.id, name: d.category, image: d.thumbnail };
   });
   return {
     props: {
