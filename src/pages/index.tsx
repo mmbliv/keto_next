@@ -24,7 +24,7 @@ export default function Home(props: PropsType) {
       </Head>
       <main className={styles.main}>
         {props.data.map((data) => {
-          return <CategoryCard key={data.id} data={data} />;
+          return <CategoryCard key={data.id} data={data} path="category" />;
         })}
       </main>
     </>

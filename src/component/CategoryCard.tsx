@@ -5,11 +5,19 @@ import style from "@/styles/CategoryCard.module.css";
 
 type PropsType = {
   data: CardType;
+  path: "category" | "recipe";
 };
 export default function CategoryCard(props: PropsType) {
   //   console.log(props);
   return (
-    <Link href={`/category/${props.data.id}`} className={style.card}>
+    <Link
+      href={
+        props.path === "category"
+          ? `/category/${props.data.id}`
+          : `/recipe/${props.data.id}`
+      }
+      className={style.card}
+    >
       <Image
         alt={props.data.name}
         src={props.data.image}

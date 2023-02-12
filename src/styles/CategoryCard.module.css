@@ -8,7 +8,11 @@
 }
 .cardText {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0;
   text-align: center;
   width: 100%;
+  background-color: rgba(240, 248, 255, 0.708);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: rgb(127, 54, 54);
 }

@@ -26,11 +26,30 @@ export async function getCategoryId() {
   });
 }
 
+export async function getRecipeId() {
+  const data = await fetchData("");
+  return data.map((d: any) => {
+    return {
+      params: {
+        id: d.id.toString(),
+      },
+    };
+  });
+}
+
 export async function getCategoryDataById(id: number) {
   const data = await fetchData(`?category=${id}`);
 
   return {
     id,
     ...data,
+  };
+}
+
+export async function getRecipeDataById(id: number) {
+  const data = await fetchData(`?id=${id}`);
+  return {
+    id,
+    ...data[0],
   };
 }

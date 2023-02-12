@@ -4,8 +4,13 @@ export type CardType = {
   image: string;
 };
 
-// export type RecipeType = {
-//   id: string;
-//   recipe: string;
-//   image: string;
-// };
+export type RecipeType = {
+  id: string;
+  name: string;
+  image: string;
+  ingredients: string[];
+  direction_steps: string[];
+  nutrition: string[];
+  difficulty: string;
+  calories: string;
+};

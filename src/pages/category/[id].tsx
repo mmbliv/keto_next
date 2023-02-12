@@ -16,7 +16,7 @@ export default function Category(props: propsType) {
   return (
     <main className={style.main}>
       {filteredData.map((d: CardType) => {
-        return <CategoryCard data={d} key={d.id} />;
+        return <CategoryCard data={d} key={d.id} path="recipe" />;
       })}
     </main>
   );
