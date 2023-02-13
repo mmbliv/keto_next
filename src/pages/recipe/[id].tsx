@@ -44,12 +44,16 @@ export default function Recipe(props: any) {
   return (
     <Layout icon={true} handleClick={handleClick}>
       <div className={style.recipe}>
-        <Image
-          src={filteredData.image}
-          width={500}
-          height={500}
-          alt={filteredData.name}
-        />
+        <div className={style.img}>
+          <Image
+            src={filteredData.image}
+            // width={500}
+            // height={500}
+            alt={filteredData.name}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
         <SideBar showUp={sidebarShowUp} />
       </div>
     </Layout>

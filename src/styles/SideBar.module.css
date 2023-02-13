@@ -1,10 +1,26 @@
-.sidebar {
-  height: 100%;
+.sidebarShow {
+  width: 100%;
   background-color: black;
   color: aliceblue;
   position: absolute;
-  right: 0;
   top: 0;
+  height: 20%;
   /* width: 30%; */
-  transition: width 1s;
+  transition: height 1s;
+}
+.sidebarHidden {
+  height: 0;
+  transition: height 1s;
+}
+@media (min-width: 900px) {
+  .sidebarShow {
+    height: 100%;
+    right: 0;
+    width: 20%;
+    transition: width 1s;
+  }
+  .sidebarHidden {
+    width: 0;
+    transition: width 1s;
+  }
 }
