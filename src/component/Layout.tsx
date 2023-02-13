@@ -5,13 +5,14 @@ import Header from "./Header";
 type PropsType = {
   children: JSX.Element;
   icon: boolean;
+  handleClick?: () => void;
 };
 
 export default function Layout(props: PropsType) {
-  console.log(props);
+  //   console.log(props);
   return (
     <>
-      <Header icon={props.icon} />
+      <Header icon={props.icon} handleClick={props.handleClick} />
       {props.children}
     </>
   );

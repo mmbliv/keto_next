@@ -5,13 +5,18 @@ import { IconType } from "react-icons/lib";
 
 type PropsType = {
   icon: boolean;
+  handleClick?: () => void;
 };
 export default function Header(props: PropsType) {
-  console.log(props);
+  //   console.log(props);
   return (
     <header className={style.header}>
       <p>Keto Diet</p>
-      {props.icon && <GiHamburgerMenu />}
+      {props.handleClick && (
+        <div onClick={props.handleClick}>
+          {props.icon && <GiHamburgerMenu />}
+        </div>
+      )}
       {/* <GiHamburgerMenu /> */}
     </header>
   );

@@ -1,12 +1,16 @@
 import { getRecipeId, getRecipeDataById } from "@/utils/fetch";
 import { RecipeType } from "@/types/type";
 import Layout from "@/component/Layout";
-import { GiHamburgerMenu } from "react-icons/gi";
+import SideBar from "@/component/SideBar";
+import Image from "next/image";
+import style from "@/styles/Recipe.module.css";
+import { useState } from "react";
 
 type PropsType = {
   data: RecipeType;
 };
 export default function Recipe(props: any) {
+  const [sidebarShowUp, setSidebarShowUp] = useState(false);
   //   console.log(props.data);
   const directions = [];
   const ingredients = [];
@@ -34,9 +38,20 @@ export default function Recipe(props: any) {
     calories: props.data.calories,
   };
   //   console.log(filteredData);
+  function handleClick() {
+    setSidebarShowUp(!sidebarShowUp);
+  }
   return (
-    <Layout icon={true}>
-      <div></div>
+    <Layout icon={true} handleClick={handleClick}>
+      <div className={style.recipe}>
+        <Image
+          src={filteredData.image}
+          width={500}
+          height={500}
+          alt={filteredData.name}
+        />
+        <SideBar showUp={sidebarShowUp} />
+      </div>
     </Layout>
   );
 }
