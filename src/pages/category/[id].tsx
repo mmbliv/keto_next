@@ -2,23 +2,26 @@ import { getCategoryId, getCategoryDataById } from "@/utils/fetch";
 import { CardType } from "@/types/type";
 import CategoryCard from "@/component/CategoryCard";
 import style from "@/styles/Home.module.css";
+import Layout from "@/component/Layout";
 
 type propsType = {
   data: CardType[];
 };
 export default function Category(props: propsType) {
   //   console.log(getCategoryDataById(2));
-  //   console.log(props);
+  console.log(props.data.length, "000000000");
   const filteredData = props.data.map((d: any) => {
     return { id: d.id, name: d.recipe, image: d.image };
   });
   console.log(filteredData);
   return (
-    <main className={style.main}>
-      {filteredData.map((d: CardType) => {
-        return <CategoryCard data={d} key={d.id} path="recipe" />;
-      })}
-    </main>
+    <Layout icon={false}>
+      <main className={style.main}>
+        {filteredData.map((d: CardType) => {
+          return <CategoryCard data={d} key={d.id} path="recipe" />;
+        })}
+      </main>
+    </Layout>
   );
 }
 

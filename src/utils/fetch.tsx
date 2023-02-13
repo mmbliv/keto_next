@@ -41,7 +41,6 @@ export async function getCategoryDataById(id: number) {
   const data = await fetchData(`?category=${id}`);
 
   return {
-    id,
     ...data,
   };
 }

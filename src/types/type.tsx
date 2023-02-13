@@ -10,7 +10,7 @@ export type RecipeType = {
   image: string;
   ingredients: string[];
   direction_steps: string[];
-  nutrition: string[];
+  nutrition: {}[];
   difficulty: string;
   calories: string;
 };

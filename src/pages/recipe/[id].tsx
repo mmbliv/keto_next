@@ -1,11 +1,13 @@
 import { getRecipeId, getRecipeDataById } from "@/utils/fetch";
 import { RecipeType } from "@/types/type";
+import Layout from "@/component/Layout";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 type PropsType = {
   data: RecipeType;
 };
 export default function Recipe(props: any) {
-  console.log(props.data);
+  //   console.log(props.data);
   const directions = [];
   const ingredients = [];
   const nutritions = [];
@@ -17,7 +19,7 @@ export default function Recipe(props: any) {
       directions.push(props.data[i]);
     }
     if (i.endsWith("grams")) {
-      nutritions.push(props.data[i]);
+      nutritions.push({ [i]: props.data[i] });
     }
   }
 
@@ -31,8 +33,12 @@ export default function Recipe(props: any) {
     image: props.data.image,
     calories: props.data.calories,
   };
-  console.log(filteredData);
-  return <div></div>;
+  //   console.log(filteredData);
+  return (
+    <Layout icon={true}>
+      <div></div>
+    </Layout>
+  );
 }
 
 export async function getStaticPaths() {
