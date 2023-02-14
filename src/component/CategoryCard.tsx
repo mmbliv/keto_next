@@ -30,7 +30,9 @@ export default function CategoryCard(props: PropsType) {
         (min-width:1200px) 20vw
         80vw"
       />
-      <p className={style.badge}>{props.data.difficulty}</p>
+      {props.data.difficulty && (
+        <p className={style.badge}>{props.data.difficulty}</p>
+      )}
       <p className={style.cardText}>{props.data.name}</p>
     </Link>
   );
