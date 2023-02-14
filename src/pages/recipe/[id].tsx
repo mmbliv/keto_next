@@ -45,7 +45,7 @@ export default function Recipe(props: any) {
     image: props.data.image,
     calories: props.data.calories,
   };
-  console.log(filteredData);
+  //   console.log(filteredData);
   function handleClick() {
     setSidebarShowUp(!sidebarShowUp);
   }
@@ -103,6 +103,7 @@ export default function Recipe(props: any) {
             style={{ objectFit: "cover" }}
             className={style.img}
           />
+          <p className={style.name}>{filteredData.name}</p>
         </div>
       );
     }
@@ -161,6 +162,7 @@ export default function Recipe(props: any) {
               style={{ objectFit: "cover" }}
               className={style.img}
             />
+            <p className={style.name}>{filteredData.name}</p>
           </div>
         )}
         <SideBar
