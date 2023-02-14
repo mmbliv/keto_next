@@ -12,3 +12,18 @@
   transform: translate(-50%, -50%);
   top: 40%;
 }
+.list {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  padding-left: 3rem;
+  gap: 1rem;
+}

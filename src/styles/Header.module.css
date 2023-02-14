@@ -8,3 +8,11 @@
   justify-content: space-between;
   font-size: x-large;
 }
+.icon {
+  cursor: pointer;
+}
+.logo {
+  text-decoration: none;
+  color: aliceblue;
+  cursor: pointer;
+}

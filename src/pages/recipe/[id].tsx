@@ -4,13 +4,14 @@ import Layout from "@/component/Layout";
 import SideBar from "@/component/SideBar";
 import Image from "next/image";
 import style from "@/styles/Recipe.module.css";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 type PropsType = {
   data: RecipeType;
 };
 export default function Recipe(props: any) {
   const [sidebarShowUp, setSidebarShowUp] = useState(false);
+  const [reactNode, setReactNode] = useState<ReactElement>();
   //   console.log(props.data);
   const directions = [];
   const ingredients = [];
@@ -37,13 +38,40 @@ export default function Recipe(props: any) {
     image: props.data.image,
     calories: props.data.calories,
   };
-  //   console.log(filteredData);
+  console.log(filteredData);
   function handleClick() {
     setSidebarShowUp(!sidebarShowUp);
   }
-  return (
-    <Layout icon={true} handleClick={handleClick}>
-      <div className={style.recipe}>
+
+  function handleOption(a: string) {
+    if (a === "direction") {
+      setReactNode(
+        <div className={style.list}>
+          {filteredData.direction_steps.map((d, i) => {
+            return (
+              <p key={i}>
+                {i + 1}:{d}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+    if (a === "ingredient") {
+      setReactNode(
+        <div className={style.list}>
+          {filteredData.ingredients.map((d, i) => {
+            return (
+              <p key={i}>
+                {i + 1}:{d}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+    if (a === "image") {
+      setReactNode(
         <div className={style.img}>
           <Image
             src={filteredData.image}
@@ -54,7 +82,44 @@ export default function Recipe(props: any) {
             style={{ objectFit: "cover" }}
           />
         </div>
-        <SideBar showUp={sidebarShowUp} />
+      );
+    }
+    if (a === "nutrition") {
+      setReactNode(
+        <div className={style.list}>
+          {filteredData.nutrition.map((d, i) => {
+            return (
+              <p key={i}>
+                {Object.keys(d)}:{Object.values(d)}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+  }
+  return (
+    <Layout icon={true} handleClick={handleClick}>
+      <div className={style.recipe}>
+        {reactNode ? (
+          reactNode
+        ) : (
+          <div className={style.img}>
+            <Image
+              src={filteredData.image}
+              // width={500}
+              // height={500}
+              alt={filteredData.name}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        )}
+        <SideBar
+          showUp={sidebarShowUp}
+          data={filteredData}
+          handleClick={handleOption}
+        />
       </div>
     </Layout>
   );

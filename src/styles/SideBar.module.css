@@ -4,13 +4,19 @@
   color: aliceblue;
   position: absolute;
   top: 0;
-  height: 20%;
+  height: 5%;
   /* width: 30%; */
-  transition: height 1s;
+  padding-bottom: 1rem;
+  transition: height 0.5s;
 }
 .sidebarHidden {
   height: 0;
-  transition: height 1s;
+  transition: height 0.5s;
+}
+.list {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
 }
 @media (min-width: 900px) {
   .sidebarShow {
@@ -22,5 +28,11 @@
   .sidebarHidden {
     width: 0;
     transition: width 1s;
+  }
+  .list {
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 3rem;
+    padding-left: 1rem;
   }
 }
