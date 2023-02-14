@@ -8,7 +8,7 @@ type PropsType = {
   path: "category" | "recipe";
 };
 export default function CategoryCard(props: PropsType) {
-  console.log(props);
+  //   console.log(props);
   return (
     <Link
       href={

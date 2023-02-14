@@ -9,11 +9,17 @@ type propsType = {
 };
 export default function Category(props: propsType) {
   //   console.log(getCategoryDataById(2));
-  console.log(props.data.length, "000000000");
+  //   console.log(props.data.length, "000000000");
+  //   console.log(props.data);
   const filteredData = props.data.map((d: any) => {
-    return { id: d.id, name: d.recipe, image: d.image };
+    return {
+      id: d.id,
+      name: d.recipe,
+      image: d.image,
+      difficulty: d.difficulty,
+    };
   });
-  console.log(filteredData);
+  //   console.log(filteredData);
   return (
     <Layout icon={false}>
       <main className={style.main}>
