@@ -8,7 +8,7 @@ type PropsType = {
   path: "category" | "recipe";
 };
 export default function CategoryCard(props: PropsType) {
-  //   console.log(props);
+  console.log(props);
   return (
     <Link
       href={
@@ -25,7 +25,12 @@ export default function CategoryCard(props: PropsType) {
         // height={100}
         fill
         style={{ objectFit: "cover" }}
+        sizes="(min-width: 600px) 40vw,
+        (min-width: 900px) 30vw,
+        (min-width:1200px) 20vw
+        80vw"
       />
+      <p className={style.badge}>{props.data.difficulty}</p>
       <p className={style.cardText}>{props.data.name}</p>
     </Link>
   );

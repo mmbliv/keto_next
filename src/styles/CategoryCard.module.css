@@ -16,3 +16,11 @@
   padding-bottom: 0.5rem;
   color: rgb(127, 54, 54);
 }
+.badge {
+  position: absolute;
+  background-color: black;
+  color: aliceblue;
+  padding: 5px;
+  font-size: smaller;
+  right: 0;
+}
