@@ -2,9 +2,15 @@ import { getRecipeId, getRecipeDataById } from "@/utils/fetch";
 import { RecipeType } from "@/types/type";
 import Layout from "@/component/Layout";
 import SideBar from "@/component/SideBar";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import style from "@/styles/Recipe.module.css";
 import { ReactElement, useState } from "react";
+import protein from "../../../public/protein.png";
+import carb from "../../../public/carb.png";
+import fat from "../../../public/fat.png";
+import nutrition from "../../../public/nutrition.png";
+import ingredient from "../../../public/ingredient.png";
+import cooking from "../../../public/cooking.png";
 
 type PropsType = {
   data: RecipeType;
@@ -24,7 +30,8 @@ export default function Recipe(props: any) {
       directions.push(props.data[i]);
     }
     if (i.endsWith("grams")) {
-      nutritions.push({ [i]: props.data[i] });
+      const key = i.split("_").join(" ").toUpperCase();
+      nutritions.push({ [key]: props.data[i] });
     }
   }
 
@@ -50,10 +57,17 @@ export default function Recipe(props: any) {
           {filteredData.direction_steps.map((d, i) => {
             return (
               <p key={i}>
-                {i + 1}:{d}
+                <span className={style.list_number}>{i + 1}</span>: {d}
               </p>
             );
           })}
+          <Image
+            src={cooking}
+            width={30}
+            height={30}
+            alt="nutrition"
+            className={style.icon}
+          />
         </div>
       );
     }
@@ -63,16 +77,23 @@ export default function Recipe(props: any) {
           {filteredData.ingredients.map((d, i) => {
             return (
               <p key={i}>
-                {i + 1}:{d}
+                <span className={style.list_number}>{i + 1}</span>: {d}
               </p>
             );
           })}
+          <Image
+            src={ingredient}
+            width={30}
+            height={30}
+            alt="nutrition"
+            className={style.icon}
+          />
         </div>
       );
     }
     if (a === "image") {
       setReactNode(
-        <div className={style.img}>
+        <div className={style.img_container}>
           <Image
             src={filteredData.image}
             // width={500}
@@ -80,6 +101,7 @@ export default function Recipe(props: any) {
             alt={filteredData.name}
             fill
             style={{ objectFit: "cover" }}
+            className={style.img}
           />
         </div>
       );
@@ -89,14 +111,39 @@ export default function Recipe(props: any) {
         <div className={style.list}>
           {filteredData.nutrition.map((d, i) => {
             return (
-              <p key={i}>
-                {Object.keys(d)}:{Object.values(d)}
+              <p key={i} className={style.nutrition}>
+                <span>{getIcon(Object.keys(d)[0])}</span>
+                {Object.keys(d)}:{" "}
+                <span className={style.nutrition_value}>
+                  {Object.values(d)}
+                </span>
               </p>
             );
           })}
+          <Image
+            src={nutrition}
+            width={30}
+            height={30}
+            alt="nutrition"
+            className={style.icon}
+          />
         </div>
       );
     }
+  }
+
+  function getIcon(a: string) {
+    let src: StaticImageData = fat;
+    if (a.startsWith("FAT")) {
+      src = fat;
+    }
+    if (a.startsWith("CARB")) {
+      src = carb;
+    }
+    if (a.startsWith("PRO")) {
+      src = protein;
+    }
+    return <Image src={src} alt="img" height={25} width={25} />;
   }
   return (
     <Layout icon={true} handleClick={handleClick}>
@@ -104,7 +151,7 @@ export default function Recipe(props: any) {
         {reactNode ? (
           reactNode
         ) : (
-          <div className={style.img}>
+          <div className={style.img_container}>
             <Image
               src={filteredData.image}
               // width={500}
@@ -112,6 +159,7 @@ export default function Recipe(props: any) {
               alt={filteredData.name}
               fill
               style={{ objectFit: "cover" }}
+              className={style.img}
             />
           </div>
         )}

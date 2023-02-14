@@ -8,7 +8,7 @@ type PropsType = {
   path: "category" | "recipe";
 };
 export default function CategoryCard(props: PropsType) {
-  console.log(props);
+  //   console.log(props);
   return (
     <Link
       href={
@@ -19,6 +19,7 @@ export default function CategoryCard(props: PropsType) {
       className={style.card}
     >
       <Image
+        className={style.img}
         alt={props.data.name}
         src={props.data.image}
         // width={100}

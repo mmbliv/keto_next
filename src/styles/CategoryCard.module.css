@@ -3,8 +3,9 @@
   position: relative;
   height: 15rem;
   width: 15rem;
-  border: 3px solid rgba(105, 105, 62, 0.55);
+  /* border: 3px solid rgba(105, 105, 62, 0.55); */
   border-radius: 5px;
+  background-color: rgba(158, 183, 184, 0.525);
 }
 .cardText {
   position: absolute;
@@ -23,4 +24,7 @@
   padding: 5px;
   font-size: smaller;
   right: 0;
+}
+.img {
+  border-radius: 5px;
 }
