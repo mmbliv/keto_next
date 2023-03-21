@@ -1,7 +1,7 @@
 ## About
 
 - This website is built using [Next.js](https://nextjs.org/) and `TypeScript` and allows users to view a variety of keto diet recipes.
-- [Webdite Link](https://keto-next.vercel.app/)
+- [Website Link](https://keto-next.vercel.app/)
 - [Source code](https://github.com/mmbliv/keto_next)
 
 ## Features
